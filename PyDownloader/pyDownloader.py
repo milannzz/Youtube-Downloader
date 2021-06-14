@@ -1,6 +1,7 @@
 from tkinter import *
 from pytube  import YouTube
 from threading import Thread
+from tkinter import filedialog
 
 # Clearer Ui using ctypes
 import ctypes
@@ -23,15 +24,19 @@ def threading():
     thread.start()
 
 def downloader():
+    global path
+    #https://www.youtube.com/watch?v=Wch3gJG2GJ4
     url = YouTube(str(link.get()))
     downloaded = Label(root,text = "Downloading - "+url.title,font="arial 11",fg='#FFA500')
     downloaded.grid(row=2,column=0)
     video = url.streams.first()
-    video.download()
+    video.download(path)
     downloaded.config(text="Downloaded - "+url.title,fg='#008000')
 
 def saveLoc() :
-    pass
+    global path
+    path=filedialog.askdirectory()
+    
 
 frame = Frame(root)
 frame.grid(row=4,column=0)
