@@ -10,8 +10,12 @@ How to use -
 
 Illustration 1 -
 
-![](https://github.com/milannzz/Youtube-Downloader/blob/main/Images/PyDownloader.png)
+![](https://github.com/milannzz/Youtube-Downloader/blob/main/Images/Dex1.png)
 
 Illustration 2 -
 
-![](https://github.com/milannzz/Youtube-Downloader/blob/main/Images/PyDownloader1.png)
+![](https://github.com/milannzz/Youtube-Downloader/blob/main/Images/Dex2.png)
+
+Illustration 3 -
+
+![](https://github.com/milannzz/Youtube-Downloader/blob/main/Images/Dex3.png)
