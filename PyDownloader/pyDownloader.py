@@ -12,6 +12,7 @@ ctypes.windll.shcore.SetProcessDpiAwareness(1)
 root = Tk()
 root.geometry("500x200")
 root.title("Youtube Downloader")
+root.resizable(0,0)
 
 Label(root,text="Paste Link Here ...",font="arial 9").grid(row=0,column=0,padx=10,pady=(10,5))
 root.grid_columnconfigure(0,weight = 1)
@@ -63,14 +64,15 @@ def downloader():
         messagebox.showerror("Error","Network Error, Please check your connection.")
         return
 
-    downloaded.config(text = "Downloading - "+url.title+" | "+str(url.length)+" secs ",fg='#FFA500')
+    downloaded.config(text = "Downloading: "+url.title+"|"+str(url.length)+" secs",fg='#FFA500')
     
     try :
         video.download(path)
     except:
         messagebox.showerror("Error","Network Error, Please check your connection.")
+        return
 
-    downloaded.config(text="Downloaded - "+url.title+" | "+str(url.length)+" secs ",fg='#008000')
+    downloaded.config(text="Downloaded: "+url.title+"|"+str(url.length)+" secs",fg='#008000')
     
 def saveLoc() :
     global path
