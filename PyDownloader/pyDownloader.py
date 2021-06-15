@@ -27,7 +27,7 @@ def on_entry_click(*args):
     entry.insert(0,paste)
 
 entry = Entry(entryFrame,width=56,textvariable=link,font="arial 9 italic")
-entry.grid(row=0,column=0,padx=10,ipady=5)
+entry.grid(row=0,column=0,padx=10,ipady=5,ipadx=5,pady=5)
 
 entry.bind('<Button-1>', on_entry_click)
 
@@ -45,17 +45,33 @@ def downloader():
         path = downloads_path
 
     #https://www.youtube.com/watch?v=Wch3gJG2GJ4
+
+    downloaded = Label(root,text = "Processing ... ",font="arial 9 bold",fg='#808080')
+    downloaded.grid(row=2,column=0)
+    root.grid_columnconfigure(2,weight = 1)
+
     try :
         url = YouTube(str(link.get()))
-        downloaded = Label(root,text = "Downloading - "+url.title,font="arial 11 bold",fg='#FFA500')
-        downloaded.grid(row=2,column=0)
-        root.grid_columnconfigure(2,weight = 1)
-        video = url.streams.first()
-        video.download(path)
-        downloaded.config(text="Downloaded - "+url.title,fg='#008000')
     except :
         messagebox.showerror("Error","Invalid Video URL")
+        downloaded.config(text="")
+        return
 
+    try :
+        video = url.streams.first()
+    except:
+        messagebox.showerror("Error","Network Error, Please check your connection.")
+        return
+
+    downloaded.config(text = "Downloading - "+url.title+" | "+str(url.length)+" secs ",fg='#FFA500')
+    
+    try :
+        video.download(path)
+    except:
+        messagebox.showerror("Error","Network Error, Please check your connection.")
+
+    downloaded.config(text="Downloaded - "+url.title+" | "+str(url.length)+" secs ",fg='#008000')
+    
 def saveLoc() :
     global path
     path=filedialog.askdirectory()
