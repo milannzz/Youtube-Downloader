@@ -67,7 +67,7 @@ frame = Frame(root)
 frame.grid(row=4,column=0,padx=10,pady=5)
 root.grid_columnconfigure(3,weight = 1)
 
-QualityButton = Button(frame,text="Quality",font="arial 9",padx=8,pady=2,command=quality)
+QualityButton = Button(frame,text="Quality",font="arial 9",state = 'disable',padx=8,pady=2,command=quality)
 QualityButton.grid(row=0,column=0,padx=10,pady=5)
 
 DwnButton = Button(frame,text="Download",font="arial 9",padx=8,pady=2,command=threading)
