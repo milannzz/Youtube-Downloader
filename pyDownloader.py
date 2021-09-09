@@ -44,9 +44,6 @@ def Process():
 
     streams = url.streams
     for stream in streams:
-        print(stream)
-
-    for stream in streams:
         if(stream.type == "video"):
             status_string.set("getting videos")
             quality_settings.append(str(stream.itag) + " | " + "Video " + stream.resolution + " " + str(stream.fps) + "fps")
