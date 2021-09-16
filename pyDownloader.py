@@ -86,15 +86,17 @@ def downloader():
             s += char
         video = url.streams.get_by_itag(s)
     video_length = "{:.2f}".format(url.length / 60)
+    title = url.title
+    title = (title[:30] + '..') if len(title) > 30 else title
     downloading_status.config(fg="orange")
-    status_string.set("Downloading :" + url.title + " | "+ video_length +" min ")
+    status_string.set("Downloading :" + title + " | "+ video_length +" min ")
     try :
         video.download(path)
     except:
         messagebox.showerror("Error", "Network Error,  Please check your connection.")
         return
     downloading_status.config(fg="green")
-    status_string.set("Downloaded :" + url.title + " | "+ video_length + " min ")
+    status_string.set("Downloaded :" + title + " | "+ video_length + " min ")
     
 def saveLoc() :
     global path
